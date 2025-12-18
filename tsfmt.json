@@ -11,7 +11,7 @@
 	"insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
 	"insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
 	"insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
-	"insertSpaceBeforeFunctionParenthesis":　true,
+	"insertSpaceBeforeFunctionParenthesis":true,
 	"placeOpenBraceOnNewLineForFunctions": true,
 	"placeOpenBraceOnNewLineForControlBlocks": true,
 }
