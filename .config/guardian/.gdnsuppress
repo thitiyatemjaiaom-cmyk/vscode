@@ -1,5 +1,5 @@
 {
-  "hydrated": true,
+  "hydrated": false,
   "properties": {
     "helpUri": "https://eng.ms/docs/microsoft-security/security/azure-security/cloudai-security-fundamentals-engineering/security-integration/guardian-wiki/microsoft-guardian/general/suppressions"
   },
