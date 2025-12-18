@@ -42,11 +42,11 @@ properties:
         description: Install required VS workloads
         # Requires elevation for the get and set operations
         securityContext: elevated
-        allowPrerelease: true
+        allowPrerelease: false
       settings:
         productId: Microsoft.VisualStudio.Product.BuildTools
         channelId: VisualStudio.17.Release
-        includeRecommended: true
+        includeRecommended: false
         components:
           - Microsoft.VisualStudio.Workload.VCTools
     - resource: NpmDsc/NpmInstall
@@ -54,7 +54,7 @@ properties:
         - npm
       directives:
         description: Install dependencies
-        allowPrerelease: true
+        allowPrerelease: false
       settings:
         PackageDirectory: '${WinGetConfigRoot}\..\'
   configurationVersion: 0.2.0
