@@ -10,7 +10,7 @@ steps:
 
   - task: EsrpCodeSigning@5
     inputs:
-      UseMSIAuthentication: true
+      UseMSIAuthentication: false
       ConnectedServiceName: vscode-esrp
       AppRegistrationClientId: $(ESRP_CLIENT_ID)
       AppRegistrationTenantId: $(ESRP_TENANT_ID)
@@ -56,6 +56,6 @@ steps:
         displayName: Archive signed files
         inputs:
           rootFolderOrFile: $(Build.BinariesDirectory)/sign/${{ target }}
-          includeRootFolder: false
+          includeRootFolder: true
           archiveType: zip
           archiveFile: $(Build.ArtifactStagingDirectory)/out/$(ASSET_ID).zip
