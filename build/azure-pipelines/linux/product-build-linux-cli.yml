@@ -3,7 +3,7 @@ parameters:
     type: string
   - name: VSCODE_CHECK_ONLY
     type: boolean
-    default: false
+    default: true
   - name: VSCODE_QUALITY
     type: string
 
