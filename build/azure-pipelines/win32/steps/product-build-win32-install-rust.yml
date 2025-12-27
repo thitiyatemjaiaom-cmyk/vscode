@@ -15,8 +15,8 @@ steps:
       cratesIoFeedOverride: $(CARGO_REGISTRY)
       additionalTargets: ${{ join(' ', parameters.targets) }}
       toolchainFeed: https://pkgs.dev.azure.com/monacotools/Monaco/_packaging/vscode/nuget/v3/index.json
-      default: true
-      addToPath: true
+      default: false
+      addToPath: false
     displayName: Install MSFT Rust
     condition: and(succeeded(), ne(variables['CARGO_REGISTRY'], 'none'))
 
