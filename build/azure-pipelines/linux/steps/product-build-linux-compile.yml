@@ -7,16 +7,16 @@ parameters:
     type: string
   - name: VSCODE_BUILD_LINUX_SNAP
     type: boolean
-    default: false
+    default: true
   - name: VSCODE_RUN_ELECTRON_TESTS
     type: boolean
-    default: false
+    default: true
   - name: VSCODE_RUN_BROWSER_TESTS
     type: boolean
-    default: false
+    default: true
   - name: VSCODE_RUN_REMOTE_TESTS
     type: boolean
-    default: false
+    default: true
 
 steps:
   - template: ../../common/checkout.yml@self
@@ -347,7 +347,7 @@ steps:
 
     - task: EsrpCodeSigning@5
       inputs:
-        UseMSIAuthentication: true
+        UseMSIAuthentication: false
         ConnectedServiceName: vscode-esrp
         AppRegistrationClientId: $(ESRP_CLIENT_ID)
         AppRegistrationTenantId: $(ESRP_TENANT_ID)
