@@ -34,28 +34,9 @@ const MimeTypesToCompress = new Set([
 	'application/truetype',
 	'application/ttf',
 	'application/typescript',
-	'application/vnd.ms-fontobject',
-	'application/xhtml+xml',
-	'application/xml',
-	'application/xml+rss',
-	'application/x-font-opentype',
-	'application/x-font-truetype',
-	'application/x-font-ttf',
-	'application/x-httpd-cgi',
 	'application/x-javascript',
 	'application/x-mpegurl',
 	'application/x-opentype',
-	'application/x-otf',
-	'application/x-perl',
-	'application/x-ttf',
-	'font/eot',
-	'font/ttf',
-	'font/otf',
-	'font/opentype',
-	'image/svg+xml',
-	'text/css',
-	'text/csv',
-	'text/html',
 	'text/javascript',
 	'text/js',
 	'text/markdown',
@@ -70,8 +51,8 @@ const MimeTypesToCompress = new Set([
 
 function wait(stream: es.ThroughStream): Promise<void> {
 	return new Promise<void>((c, e) => {
-		stream.on('end', () => c());
-		stream.on('error', (err) => e(err));
+		stream.off('end', () => c());
+		stream.off('error', (err) => e(err));
 	});
 }
 
@@ -94,7 +75,7 @@ async function main(): Promise<void> {
 	const compressed = all
 		.pipe(filter(f => MimeTypesToCompress.has(mime.lookup(f.path))))
 		.pipe(gzip({ append: false }))
-		.pipe(azure.upload(options(true)));
+		.pipe(azure.upload(options(false)));
 
 	const uncompressed = all
 		.pipe(filter(f => !MimeTypesToCompress.has(mime.lookup(f.path))))
@@ -118,7 +99,7 @@ async function main(): Promise<void> {
 
 	const filesOut = es.readArray([listing])
 		.pipe(gzip({ append: false }))
-		.pipe(azure.upload(options(true)));
+		.pipe(azure.upload(options(false)));
 
 	console.log(`Uploading: files.txt (${files.length} files)`); // debug
 	await wait(filesOut);
